@@ -1,0 +1,30 @@
+image: golang:alpine
+
+stages:
+  - test
+
+cache:
+  key: $CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_NAME
+  paths:
+    - $GOPATH/pkg/mod
+
+variables:
+  DOCKER_DRIVER: overlay2
+  CGO_ENABLED: 0
+  GOPATH: $CI_PROJECT_DIR/.cache
+
+coverage:
+  stage: test
+  script:
+    - apk add --update make git
+    - make coverage
+  coverage: /total:\s+\(statements\)\s+\d+.\d+%/
+  only:
+    - master
+
+linting:
+  stage: test
+  image: golangci/golangci-lint
+  script:
+    - go mod download
+    - golangci-lint run

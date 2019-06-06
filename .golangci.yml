@@ -1,0 +1,18 @@
+# Full list of options: https://github.com/golangci/golangci-lint/blob/master/.golangci.example.yml
+run:
+  deadline: 10m
+
+linters:
+  enable:
+    - goimports
+    - unconvert
+    - misspell
+    - golint
+    - govet
+    - gofmt
+    - megacheck
+  enable-all: false
+
+issues:
+  max-per-linter: 0
+  max-same-issues: 0
