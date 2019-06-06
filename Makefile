@@ -1,36 +1,7 @@
-.PHONY: build clean test coverage test-race-detector help godoc lint deploy
+.PHONY: test coverage test-race-detector help godoc lint
 
-GO_PACKAGE_NAME:=gitlab.skypicker.com/automation/rese/portalo-group/services
-CMDS := $(foreach CMD,$(wildcard cmd/*),$(subst cmd/,,$(CMD)))
-
-# determine proper version to build into binaries
-# default is CI_COMMIT_TAG, if empty then try CI_COMMIT_REF_SLUG, else use 0.0.0
-VERSION:=$(CI_COMMIT_TAG)
-ifeq ($(VERSION),)
-VERSION := $(CI_COMMIT_REF_SLUG)
-endif
-ifeq ($(VERSION),)
-VERSION := 0.0.0
-endif
-
-TMP:=.tmp
-MAKE_TMP:=$(shell mkdir -p $(TMP))
-
+GO_PACKAGE_NAME:=gitlab.skypicker.com/go/sentryhook
 COVERAGE_FILE:=$(TMP)/test-coverage.txt
-
-default: build
-
-#? build: compile binaries in /cmd
-build:
-	echo "Building commands..."
-	for CMD in $(CMDS); do \
-		CGO_ENABLED=0 go build -ldflags '-w -s -X main.appVersion=$(VERSION)' -o bin/$$CMD -v ./cmd/$$CMD; \
-	done
-
-#? clean: clean build artifacts and temp directory
-clean:
-	rm -rf bin/
-	rm -rf $(TMP)
 
 #? test: run tests
 test:
