@@ -3,11 +3,6 @@ image: golang:alpine
 stages:
   - test
 
-cache:
-  key: $CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_NAME
-  paths:
-    - $GOPATH/pkg/mod
-
 variables:
   DOCKER_DRIVER: overlay2
   CGO_ENABLED: 0
