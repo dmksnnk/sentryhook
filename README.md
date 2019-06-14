@@ -1,6 +1,8 @@
 # Logrus Sentry Hook
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/dmksnnk/sentryhook)](https://goreportcard.com/report/github.com/dmksnnk/sentryhook)
+[![pipeline status](https://gitlab.com/aspidima/sentryhook/badges/master/pipeline.svg)](https://gitlab.com/aspidima/sentryhook/commits/master)
+[![coverage report](https://gitlab.com/aspidima/sentryhook/badges/master/coverage.svg)](https://gitlab.com/aspidima/sentryhook/commits/master)
 
 It is a hook for [logrus](https://github.com/sirupsen/logrus) logger
 for sending errors and messages to the Sentry on specific log level.
