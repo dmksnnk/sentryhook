@@ -1,5 +1,7 @@
 # Logrus Sentry Hook
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/dmksnnk/sentryhook)](https://goreportcard.com/report/github.com/dmksnnk/sentryhook)
+
 It is a hook for [logrus](https://github.com/sirupsen/logrus) logger
 for sending errors and messages to the Sentry on specific log level.
 It uses default sentry client, so all you need is to add a hook.
@@ -22,12 +24,17 @@ logrus.AddHook(hook)
 Now, when you will make a log statement, like:
 
 ```go
-log.WithError(errors.New("some error")).WithField("BBB", map[string]int{"bb": 111}).Fatal("test")
+log.WithError(errors.New("some error")).WithField("BBB", map[string]int{"bb": 111}).Fatal("This is a fatal message")
 ```
 
 hook will send an error to the Sentry and add log fields as tags.
 
-In a case of log message without an error, hook will send a message with tags.
+In a case of log message without an error, hook will send a message with or without tags:
+
+```go
+log.WithField("BBB", map[string]int{"bb": 111}).Error("This is a warning message") // with tags
+log.Error("This is a warning message") // without tags, just message
+```
 
 **Pro tip**
 
