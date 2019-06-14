@@ -9,6 +9,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// SentrySender is interface for sender to Sentry (which raven.Client implements)
 type SentrySender interface {
 	CaptureMessage(message string, tags map[string]string, interfaces ...raven.Interface) string
 	CaptureError(err error, tags map[string]string, interfaces ...raven.Interface) string
@@ -16,6 +17,7 @@ type SentrySender interface {
 	CaptureErrorAndWait(err error, tags map[string]string, interfaces ...raven.Interface) string
 }
 
+// SentryHook is a struct which holds levels on which send events, and sender which sends events
 type SentryHook struct {
 	asyncLevels map[logrus.Level]struct{}
 	syncLevels  map[logrus.Level]struct{}
