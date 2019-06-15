@@ -1,4 +1,4 @@
-module gitlab.skypicker.com/go/sentryhook
+module github.com/dmksnnk/sentryhook
 
 go 1.12
 
