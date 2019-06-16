@@ -5,7 +5,7 @@
 [![coverage report](https://gitlab.com/aspidima/sentryhook/badges/master/coverage.svg)](https://gitlab.com/aspidima/sentryhook/commits/master)
 [![GoDoc](https://img.shields.io/badge/GoDoc-referece-blue.svg?style=flat)](https://godoc.org/github.com/dmksnnk/sentryhook)
 
-It is a hook for [logrus](https://github.com/sirupsen/logrus) logger
+A hook for [logrus](https://github.com/sirupsen/logrus) logger
 for sending errors and messages to the [Sentry](https://sentry.io/) on specific log level.
 It uses default sentry client, so all you need is to add a hook.
 
